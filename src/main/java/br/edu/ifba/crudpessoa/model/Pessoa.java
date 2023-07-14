@@ -22,12 +22,7 @@ public class Pessoa {
     public Long getId() {
       return id;
     }
-
-
-    public void setId(Optional<String> optional) {
-        this.id = optional;
-    }
-
+  
     public String getNome() {
         return nome;
     }
