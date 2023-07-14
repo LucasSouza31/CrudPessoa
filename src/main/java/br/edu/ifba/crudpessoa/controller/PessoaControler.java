@@ -1,10 +1,15 @@
 package br.edu.ifba.crudpessoa.controller;
 
 import java.util.Optional;
+import java.util.List;
+
+
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,12 +20,17 @@ import br.edu.ifba.crudpessoa.model.Pessoa;
 import br.edu.ifba.crudpessoa.repository.PessoaRepository;
 
 @Controller
-@RequestMapping("/pessoa")
+@RequestMapping(produces = "application/json",path = "/pessoa")
 public class PessoaControler {
 
     @Autowired
     private PessoaRepository pessoaRepository;
     
+    @GetMapping("/todos")
+    public List<Pessoa> exibirCadastrados(){
+        return pessoaRepository.findAll();
+    }
+
     @PostMapping("/cadastrar")
     public Pessoa cadastrarPessoa(@RequestBody Pessoa pessoa ){
         return pessoaRepository.save(pessoa);
