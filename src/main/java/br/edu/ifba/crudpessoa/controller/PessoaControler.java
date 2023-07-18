@@ -24,7 +24,6 @@ import br.edu.ifba.crudpessoa.repository.PessoaRepository;
 
 
 @RestController
-@Controller
 @RequestMapping(produces = "application/json",path = "/pessoa")
 public class PessoaControler {
 
